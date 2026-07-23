@@ -1,0 +1,107 @@
+/*Bei News Digest 全局样式*/
+
+/*导入主题变量*/
+@import './styles/variables.wxss';
+@import './styles/common.wxss';
+@import './styles/animations.wxss';
+
+/*全局样式重置 - 使用 view 和 text 替代 * 选择器*/
+view {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+text {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  font-size: 32rpx;
+  color: #1a1a1a;
+  background-color: #1a1a1a;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*安全区域适配*/
+.safe-area-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/*通用工具类*/
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/*文字省略*/
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*隐藏滚动条*/
+.hide-scrollbar {
+  -webkit-overflow-scrolling: touch;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/*页面容器*/
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #ffffff;
+}
+
+/*卡片样式*/
+.card {
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+}
+
+/*分割线*/
+.divider {
+  width: 100%;
+  height: 1rpx;
+  background-color: rgba(0, 0, 0, 0.05);
+}

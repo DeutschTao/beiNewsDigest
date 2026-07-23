@@ -1,0 +1,24 @@
+<!-- 时间线 Atom 组件 -->
+<base-atom type="timeline" delay="{{delay}}">
+  <view class="timeline-atom">
+    <view class="atom-header">
+      <text class="atom-icon">📅</text>
+      <text class="atom-title">事件时间线</text>
+    </view>
+    <view class="timeline-list">
+      <view 
+        wx:for="{{events}}" 
+        wx:key="index"
+        class="timeline-item atom-fade-in"
+        style="animation-delay: {{delay + index * 100}}ms"
+      >
+        <view class="timeline-dot {{index === 0 ? 'latest' : ''}}"></view>
+        <view class="timeline-line" wx:if="{{index < events.length - 1}}"></view>
+        <view class="timeline-content">
+          <text class="timeline-time">{{item.time || item.date}}</text>
+          <text class="timeline-text">{{item.description || item.event}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</base-atom>

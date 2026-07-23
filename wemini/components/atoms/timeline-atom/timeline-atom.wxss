@@ -1,0 +1,66 @@
+/* 时间线 Atom 组件样式 */
+
+.timeline-atom {
+  padding: 0;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  padding-bottom: 32rpx;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-dot {
+  position: relative;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background-color: #cccccc;
+  flex-shrink: 0;
+  margin-right: 20rpx;
+  margin-top: 4rpx;
+}
+
+.timeline-dot.latest {
+  background-color: #333333;
+  width: 28rpx;
+  height: 28rpx;
+  margin-top: 0;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 10rpx;
+  top: 32rpx;
+  width: 4rpx;
+  height: calc(100% - 32rpx);
+  background-color: #e0e0e0;
+}
+
+.timeline-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-time {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8rpx;
+}
+
+.timeline-text {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.5;
+}

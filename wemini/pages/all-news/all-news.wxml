@@ -1,0 +1,84 @@
+<!-- 全部新闻列表页（v2 - 按源Tab分类展示）-->
+<view class="all-news-page">
+  <!-- 顶部 Tab 栏 -->
+  <view wx:if="{{sources.length > 0}}" class="tab-bar">
+    <scroll-view scroll-x class="tab-scroll" show-scrollbar="{{false}}">
+      <view
+        wx:for="{{sources}}"
+        wx:key="id"
+        class="tab-item {{activeSourceId === item.id ? 'active' : ''}}"
+        bindtap="onTabChange"
+        data-id="{{item.id}}"
+      >
+        <text class="tab-text">{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading && list.length === 0}}" class="loading-container">
+    <view class="loading-spinner"></view>
+  </view>
+
+  <!-- 新闻列表 -->
+  <scroll-view
+    wx:else
+    scroll-y
+    class="news-list"
+    bindscrolltolower="onLoadMore"
+    enable-back-to-top
+  >
+    <view 
+      wx:for="{{list}}" 
+      wx:key="id"
+      class="news-item"
+      bindtap="onItemTap"
+      data-item="{{item}}"
+    >
+      <!-- 缩略图 -->
+      <view class="item-thumb" wx:if="{{item.cover_image && !item._imgError}}">
+        <image 
+          src="{{item.cover_image}}" 
+          mode="aspectFill"
+          lazy-load
+          data-id="{{item.id}}"
+          binderror="onItemImageError"
+        ></image>
+      </view>
+      <view wx:else class="item-thumb item-thumb-placeholder">
+        <text class="thumb-placeholder-icon">📰</text>
+      </view>
+      <!-- 内容 -->
+      <view class="item-body {{item.cover_image ? '' : 'no-thumb'}}">
+        <text class="item-title">{{item.title}}</text>
+        <view class="item-meta">
+          <text class="item-source">{{item.source_name}}</text>
+          <text class="item-time">{{item.formattedTime}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 加载更多 -->
+    <view wx:if="{{hasMore}}" class="load-more" bindtap="onLoadMore">
+      <text wx:if="{{loadingMore}}" class="loading-text">加载中...</text>
+      <text wx:else class="load-text">加载更多</text>
+    </view>
+
+    <!-- 没有更多 -->
+    <view wx:if="{{!hasMore && list.length > 0}}" class="no-more">
+      <text>— 已加载全部 —</text>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{list.length === 0 && !loading}}" class="empty-wrapper">
+      <empty-state
+        type="no-data"
+        title="暂无新闻"
+        description="暂时没有新闻内容"
+        showAction="{{true}}"
+        actionText="刷新"
+        bind:action="onRefresh"
+      />
+    </view>
+  </scroll-view>
+</view>

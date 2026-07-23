@@ -1,0 +1,100 @@
+"""Home API - per-source Top3 by latest time."""
+from datetime import datetime, timedelta, timezone
+
+from fastapi import APIRouter, Depends, Query
+from sqlalchemy import case, func
+from sqlalchemy.orm import Session
+
+from ..config import load_config
+from ..deps import get_db
+from ..models import NewsArticle, NewsSource
+from ..schemas.common import ApiResponse
+from ..utils.logger import logger
+
+router = APIRouter(prefix="/api/v2/home", tags=["home"])
+
+config = load_config()
+
+
+def _now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _article_sort_key(article):
+    """Return a sortable datetime for an article:
+    use published_at if available, else fetched_at."""
+    ts_str = article.published_at or article.fetched_at or "1970-01-01T00:00:00Z"
+    try:
+        return datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+    except Exception:
+        return datetime.min.replace(tzinfo=timezone.utc)
+
+
+@router.get("")
+def get_home(
+    db: Session = Depends(get_db),
+    limit: int = Query(3, ge=1, le=10),
+):
+    """Return enabled sources, each with up to `limit` items ordered by latest time.
+
+    Within each group, items are sorted by published_at DESC (fallback to fetched_at).
+    Groups are sorted by their latest item's time DESC.
+    """
+    enabled_sources = (
+        db.query(NewsSource)
+        .filter(NewsSource.is_enabled == 1)
+        .order_by(NewsSource.display_order)
+        .all()
+    )
+
+    groups = []
+    for src in enabled_sources:
+        articles = (
+            db.query(NewsArticle)
+            .filter(NewsArticle.source_id == src.id)
+            .order_by(
+                # Coalesce: prefer published_at, fallback to fetched_at, both DESC
+                case(
+                    (NewsArticle.published_at.isnot(None), NewsArticle.published_at),
+                    else_=NewsArticle.fetched_at,
+                ).desc(),
+                NewsArticle.id.desc(),
+            )
+            .limit(limit)
+            .all()
+        )
+
+        if not articles:
+            groups.append({
+                "source_id": src.id,
+                "source_code": src.code,
+                "source_name": src.name,
+                "items": [],
+            })
+            continue
+
+        items = [a.to_dict(source=src) for a in articles]
+        groups.append({
+            "source_id": src.id,
+            "source_code": src.code,
+            "source_name": src.name,
+            "items": items,
+        })
+
+    # Sort groups by their latest article's time DESC
+    def _group_latest_time(group):
+        if not group["items"]:
+            return datetime.min.replace(tzinfo=timezone.utc)
+        ts_str = group["items"][0].get("published_at") or group["items"][0].get("fetched_at") or "1970-01-01T00:00:00Z"
+        try:
+            return datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+        except Exception:
+            return datetime.min.replace(tzinfo=timezone.utc)
+
+    groups.sort(key=_group_latest_time, reverse=True)
+
+    return ApiResponse.success({
+        "groups": groups,
+        "updated_at": _now(),
+        "total_sources": len(groups),
+    })

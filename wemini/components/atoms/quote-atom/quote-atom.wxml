@@ -1,0 +1,17 @@
+<!-- 引述 Atom 组件 -->
+<base-atom type="quote" delay="{{delay}}">
+  <view class="quote-atom">
+    <view class="atom-header">
+      <text class="atom-icon">💬</text>
+      <text class="atom-title">关键引述</text>
+    </view>
+    <view class="quote-content">
+      <text class="quote-mark">"</text>
+      <text class="quote-text">{{quote}}</text>
+      <view class="quote-author" wx:if="{{author}}">
+        <text>— {{author}}</text>
+        <text wx:if="{{role}}" class="quote-role">{{role}}</text>
+      </view>
+    </view>
+  </view>
+</base-atom>

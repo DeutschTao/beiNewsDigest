@@ -1,0 +1,19 @@
+<!-- 骨架屏卡片组件 -->
+<view class="skeleton-card">
+  <!-- 顶部标题骨架 -->
+  <view class="skeleton-header">
+    <view class="skeleton-title"></view>
+    <view class="skeleton-date"></view>
+  </view>
+
+  <!-- 封面图骨架 -->
+  <view class="skeleton-cover">
+    <view class="skeleton-image"></view>
+  </view>
+
+  <!-- 底部信息骨架 -->
+  <view class="skeleton-footer">
+    <view class="skeleton-source"></view>
+    <view class="skeleton-time"></view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/detail/detail",
+    "pages/all-news/all-news",
+    "pages/sources/sources",
+    "pages/settings/settings"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "Bei News Digest",
+    "navigationBarBackgroundColor": "#1a1a1a",
+    "backgroundColor": "#1a1a1a",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "usingComponents": {
+    "digest-header": "/components/digest-header/digest-header",
+    "digest-card": "/components/digest-card/digest-card",
+    "digest-footer": "/components/digest-footer/digest-footer",
+    "fab-menu": "/components/fab-menu/fab-menu",
+    "empty-state": "/components/empty-state/empty-state",
+    "skeleton-card": "/components/skeleton-card/skeleton-card"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

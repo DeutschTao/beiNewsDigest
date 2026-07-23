@@ -1,0 +1,42 @@
+/* 文本 Atom 组件样式 */
+
+.text-atom {
+  padding: 0;
+}
+
+.points-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.point-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.point-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.point-item:first-child {
+  padding-top: 0;
+}
+
+.point-bullet {
+  flex-shrink: 0;
+  width: 40rpx;
+  font-size: 36rpx;
+  color: #333333;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.point-text {
+  flex: 1;
+  font-size: 32rpx;
+  color: #1a1a1a;
+  line-height: 1.6;
+}

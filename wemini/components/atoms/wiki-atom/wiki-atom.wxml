@@ -1,0 +1,18 @@
+<!-- 百科词条 Atom 组件 -->
+<base-atom type="wiki" delay="{{delay}}">
+  <view class="wiki-atom" bindtap="onToggle">
+    <view class="atom-header">
+      <text class="atom-icon">📖</text>
+      <text class="atom-title">百科词条</text>
+      <text class="expand-icon {{expanded ? 'expanded' : ''}}">▼</text>
+    </view>
+    <view class="wiki-title">{{title}}</view>
+    <view class="wiki-content {{expanded ? 'show' : ''}}">
+      <text class="wiki-summary">{{summary}}</text>
+      <view class="wiki-link" catchtap="onOpenWiki">
+        <text>查看完整词条</text>
+        <text class="link-arrow">→</text>
+      </view>
+    </view>
+  </view>
+</base-atom>

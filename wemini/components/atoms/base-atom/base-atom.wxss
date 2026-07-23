@@ -1,0 +1,31 @@
+/* 基础 Atom 组件样式 */
+
+.base-atom {
+  padding: 32rpx;
+  background-color: #ffffff;
+  border-radius: 24rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.base-atom:last-child {
+  margin-bottom: 0;
+}
+
+/* 原子组件通用头部 */
+.atom-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.atom-icon {
+  font-size: 36rpx;
+}
+
+.atom-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #666666;
+}

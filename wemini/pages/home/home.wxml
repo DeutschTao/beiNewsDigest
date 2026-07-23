@@ -1,0 +1,71 @@
+<!-- 首页 -->
+<view class="home-page">
+  <!-- Digest 头部 -->
+  <digest-header
+    currentIndex="{{currentIndex}}"
+    total="{{digest.length}}"
+    lastRefresh="{{lastRefresh}}"
+    onRefresh="onRefresh"
+    onToggle="onToggle"
+  />
+
+
+  <!-- Digest 轮播 -->
+  <swiper
+    class="news-swiper"
+    current="{{currentIndex}}"
+    bindchange="onSwiperChange"
+    previous-margin="60rpx"
+    next-margin="60rpx"
+    circular
+    autoplay="{{false}}"
+  >
+    <block wx:for="{{digest}}" wx:key="id">
+      <swiper-item class="swiper-item">
+        <digest-card
+          news="{{item}}"
+          isCurrent="{{currentIndex === index}}"
+          isRead="{{readHistory[item.id]}}"
+          bind:tap="onCardTap"
+          bind:read="onMarkRead"
+        />
+      </swiper-item>
+    </block>
+  </swiper>
+
+
+  <!-- Digest 底部 -->
+  <digest-footer
+    currentIndex="{{currentIndex}}"
+    total="{{digest.length}}"
+    showProgress="{{true}}"
+    lastRefresh="{{lastRefresh}}"
+  />
+
+
+  <!-- FAB 菜单 -->
+  <fab-menu
+    bind:action="onFabAction"
+    disabled="{{loading}}"
+  />
+
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-overlay">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+
+  <!-- 空状态 -->
+  <view wx:elif="{{digest.length === 0 && !loading}}" class="empty-overlay">
+    <empty-state
+      type="no-data"
+      title="暂无新闻"
+      description="下拉刷新获取最新内容"
+      showAction="{{true}}"
+      actionText="刷新"
+      bind:action="onRefresh"
+    />
+  </view>
+</view>

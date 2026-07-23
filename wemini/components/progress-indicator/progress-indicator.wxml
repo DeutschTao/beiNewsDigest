@@ -1,0 +1,9 @@
+<!-- 进度指示器组件 -->
+<view class="progress-indicator">
+  <view 
+    wx:for="{{total}}" 
+    wx:key="index"
+    class="indicator-dot {{index === current ? 'active' : ''}} {{index < current ? 'read' : ''}}"
+    style="{{index === current ? 'width: ' + activeWidth : 'width: 12rpx'}}"
+  ></view>
+</view>

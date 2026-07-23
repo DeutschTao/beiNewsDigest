@@ -1,0 +1,197 @@
+<!-- 新闻源管理页 -->
+<view class="sources-page">
+  <!-- Tab 切换 -->
+  <view class="tab-container">
+    <view
+      class="tab-item {{activeTab === 'preset' ? 'active' : ''}}"
+      bindtap="onTabChange"
+      data-tab="preset"
+    >
+      <text class="tab-icon">✓</text>
+      <text class="tab-text">新闻源</text>
+      <text class="tab-count">{{allSources.length}}</text>
+    </view>
+    <view
+      class="tab-item {{activeTab === 'custom' ? 'active' : ''}}"
+      bindtap="onTabChange"
+      data-tab="custom"
+    >
+      <text class="tab-icon">🔗</text>
+      <text class="tab-text">自定义添加</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="tab-content">
+    <!-- 预设新闻源（所有源） -->
+    <scroll-view scroll-y wx:if="{{activeTab === 'preset'}}" class="sources-list">
+      <view
+        wx:for="{{allSources}}"
+        wx:key="id"
+        class="source-item"
+      >
+        <view class="source-left">
+          <view class="source-info">
+            <view class="source-name-row">
+              <text class="source-name">{{item.name}}</text>
+              <text wx:if="{{item.source_type === 'crawler' && !item.rss_url}}" class="type-badge">网页</text>
+            </view>
+            <text class="source-url">{{item.homepage_url || item.rss_url}}</text>
+          </view>
+        </view>
+        <view class="source-right">
+          <!-- 状态标签 -->
+          <text
+            wx:if="{{item._status}}"
+            class="status-badge {{item._status === 'ok' ? 'status-ok' : 'status-err'}}"
+          >
+            {{item._status === 'ok' ? '' : ''}}
+          </text>
+          <!-- 检测按钮 -->
+          <view
+            class="check-btn {{item._checking ? 'checking' : ''}}"
+            bindtap="onCheckSource"
+            data-item="{{item}}"
+          >
+            <text wx:if="{{item._checking}}">⟳</text>
+            <text wx:else>检测</text>
+          </view>
+          <!-- 开关 -->
+          <view
+            class="toggle-switch {{item.is_enabled ? 'on' : ''}}"
+            bindtap="onToggleSource"
+            data-item="{{item}}"
+          >
+            <view class="switch-dot"></view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view wx:if="{{allSources.length === 0 && !loading}}" class="empty-state">
+        <text>暂无新闻源</text>
+      </view>
+    </scroll-view>
+
+    <!-- 自定义添加 -->
+    <scroll-view scroll-y wx:if="{{activeTab === 'custom'}}" class="custom-tab">
+      <!-- 类型选择卡 -->
+      <view class="type-selector-card">
+        <view class="selector-header">
+          <text class="selector-title">选择源类型</text>
+          <text class="selector-desc">不同类型使用不同的抓取方式</text>
+        </view>
+
+        <view class="type-options">
+          <view
+            class="type-option {{sourceType === 'rss' ? 'active' : ''}}"
+            bindtap="onSelectType"
+            data-type="rss"
+          >
+            <text class="type-icon">📡</text>
+            <view class="type-info">
+              <text class="type-name">RSS 源</text>
+              <text class="type-desc">推荐：支持标准 RSS/Atom</text>
+            </view>
+            <text wx:if="{{sourceType === 'rss'}}" class="type-check">✓</text>
+          </view>
+
+          <view
+            class="type-option {{sourceType === 'crawler' ? 'active' : ''}}"
+            bindtap="onSelectType"
+            data-type="crawler"
+          >
+            <text class="type-icon">🌐</text>
+            <view class="type-info">
+              <text class="type-name">网页爬虫</text>
+              <text class="type-desc">通用 HTML 提取，效果有限</text>
+            </view>
+            <text wx:if="{{sourceType === 'crawler'}}" class="type-check">✓</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 添加表单 -->
+      <view class="add-card">
+        <view class="add-header">
+          <text class="add-icon">{{sourceType === 'rss' ? '📡' : '🌐'}}</text>
+          <text class="add-title">添加自定义 {{sourceType === 'rss' ? 'RSS' : '网页'}}</text>
+          <text class="add-desc">
+            {{sourceType === 'rss'
+              ? '输入 RSS/Atom 订阅链接（推荐）'
+              : '输入网页 URL，仅抓取该页基础信息'}}
+          </text>
+        </view>
+
+        <view class="input-wrapper">
+          <text class="input-icon">📝</text>
+          <input
+            class="url-input"
+            type="text"
+            placeholder="源名称（选填，不填自动获取）"
+            value="{{customName}}"
+            bindinput="onNameInput"
+          />
+        </view>
+
+        <view class="input-wrapper">
+          <text class="input-icon">🔗</text>
+          <input
+            class="url-input"
+            type="text"
+            placeholder="{{sourceType === 'rss' ? 'https://example.com/feed.xml' : 'https://example.com/news'}}"
+            value="{{customUrl}}"
+            bindinput="onUrlInput"
+          />
+        </view>
+
+        <view
+          class="submit-btn {{customUrl ? 'active' : ''}}"
+          bindtap="onAddSource"
+        >
+          <text wx:if="{{adding}}">添加中...</text>
+          <text wx:else>确认添加</text>
+        </view>
+      </view>
+
+      <!-- 已添加的自定义源 -->
+      <view wx:if="{{customSources.length > 0}}" class="custom-list">
+        <text class="custom-title">已添加的自定义源</text>
+        <view
+          wx:for="{{customSources}}"
+          wx:key="id"
+          class="custom-item"
+        >
+          <view class="custom-info">
+            <view class="source-name-row">
+              <text class="custom-name">{{item.name}}</text>
+              <text wx:if="{{item.source_type === 'crawler'}}" class="type-badge">网页</text>
+            </view>
+            <text class="custom-url">{{item.homepage_url || item.rss_url}}</text>
+          </view>
+          <view class="custom-actions">
+            <view
+              class="toggle-switch {{item.is_enabled ? 'on' : ''}}"
+              bindtap="onToggleSource"
+              data-item="{{item}}"
+            >
+              <view class="switch-dot"></view>
+            </view>
+            <view
+              class="delete-btn"
+              bindtap="onDeleteSource"
+              data-item="{{item}}"
+            >
+              <text>🗑️</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-overlay">
+    <view class="loading-spinner"></view>
+  </view>
+</view>

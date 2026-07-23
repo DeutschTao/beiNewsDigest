@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "base-atom": "/components/atoms/base-atom/base-atom"
+  }
+}

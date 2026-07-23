@@ -1,0 +1,17 @@
+<!-- 地图 Atom 组件 -->
+<base-atom type="map" delay="{{delay}}">
+  <view class="map-atom">
+    <view class="atom-header">
+      <text class="atom-icon">🗺️</text>
+      <text class="atom-title">相关地点</text>
+    </view>
+    <view class="map-info" bindtap="onOpenLocation">
+      <text class="map-icon">📍</text>
+      <view class="map-details">
+        <text class="location-name">{{location}}</text>
+        <text class="location-desc" wx:if="{{description}}">{{description}}</text>
+      </view>
+      <text class="map-arrow">→</text>
+    </view>
+  </view>
+</base-atom>

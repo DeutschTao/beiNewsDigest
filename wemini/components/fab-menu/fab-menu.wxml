@@ -1,0 +1,59 @@
+<!-- FAB 悬浮菜单组件 -->
+<view class="fab-menu">
+  <!-- 半透明遮罩 -->
+  <view
+    class="fab-overlay {{isExpanded ? 'show' : ''}}"
+    bindtap="closeMenu"
+    catchtouchmove="preventTouch"
+  ></view>
+
+  <!-- 菜单项（放在主按钮前面，展开时从下往上） -->
+  <view class="fab-actions">
+    <!-- 刷新 -->
+    <view
+      class="fab-action {{isExpanded ? 'show' : ''}} action-1"
+      data-action="refresh"
+      bindtap="onAction"
+    >
+      <view class="action-icon refresh-icon">
+        <text>🔄</text>
+      </view>
+      <view class="action-label">刷新</view>
+    </view>
+
+    <!-- 全部新闻 -->
+    <view
+      class="fab-action {{isExpanded ? 'show' : ''}} action-2"
+      data-action="allNews"
+      bindtap="onAction"
+    >
+      <view class="action-icon allnews-icon">
+        <text>📋</text>
+      </view>
+      <view class="action-label">全部新闻</view>
+    </view>
+
+    <!-- 设置 -->
+    <view
+      class="fab-action {{isExpanded ? 'show' : ''}} action-3"
+      data-action="settings"
+      bindtap="onAction"
+    >
+      <view class="action-icon settings-icon">
+        <text>⚙️</text>
+      </view>
+      <view class="action-label">设置</view>
+    </view>
+  </view>
+
+  <!-- 主按钮（放在最后，视觉上在底部） -->
+  <view
+    class="fab-main {{isExpanded ? 'active' : ''}}"
+    bindtap="toggleMenu"
+    hover-class="fab-main-hover"
+  >
+    <view class="fab-icon">
+      <text class="icon-plus {{isExpanded ? 'rotate' : ''}}">三</text>
+    </view>
+  </view>
+</view>

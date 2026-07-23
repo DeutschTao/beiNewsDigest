@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "text-atom": "/components/atoms/text-atom/text-atom",
+    "quote-atom": "/components/atoms/quote-atom/quote-atom",
+    "wiki-atom": "/components/atoms/wiki-atom/wiki-atom",
+    "image-atom": "/components/atoms/image-atom/image-atom",
+    "map-atom": "/components/atoms/map-atom/map-atom",
+    "timeline-atom": "/components/atoms/timeline-atom/timeline-atom",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "AI 智能分析",
+  "navigationBarBackgroundColor": "#1a1a1a"
+}

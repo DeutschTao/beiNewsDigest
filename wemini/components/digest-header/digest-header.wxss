@@ -1,0 +1,40 @@
+/* Digest 头部组件样式 */
+
+.digest-header {
+  padding: 48rpx 32rpx 32rpx;
+  padding-top: calc(48rpx + constant(safe-area-inset-top));
+  padding-top: calc(48rpx + env(safe-area-inset-top));
+  background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+}
+
+.header-content {
+  margin-bottom: 16rpx;
+}
+
+.app-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1rpx;
+}
+
+.date-info {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.date-icon {
+  margin-right: 12rpx;
+  font-size: 28rpx;
+}
+
+.date-text {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.update-hint {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.5);
+}

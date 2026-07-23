@@ -1,0 +1,10 @@
+<!-- Digest 头部组件 -->
+<view class="digest-header">
+  <view class="header-content">
+    <h1 class="app-title">Bei News Digest</h1>
+  </view>
+  <view class="date-info">
+    <text class="date-icon">📰</text>
+    <text class="date-text">{{formattedDate}}</text>
+  </view>
+</view>

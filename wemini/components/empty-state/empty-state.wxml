@@ -1,0 +1,13 @@
+<!-- 空状态组件 -->
+<view class="empty-state">
+  <view class="empty-icon-wrapper">
+    <text class="empty-icon">{{iconMap[type]}}</text>
+  </view>
+  <view class="empty-title">{{title}}</view>
+  <view class="empty-desc">{{description}}</view>
+  <view class="empty-action" wx:if="{{showAction}}">
+    <button class="action-btn" bindtap="onAction" hover-class="btn-active">
+      {{actionText}}
+    </button>
+  </view>
+</view>

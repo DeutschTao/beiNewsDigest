@@ -1,0 +1,40 @@
+/* 进度指示器组件样式 */
+
+.progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  padding: 24rpx 0;
+}
+
+.indicator-dot {
+  height: 12rpx;
+  border-radius: 6rpx;
+  background-color: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  min-width: 12rpx;
+}
+
+.indicator-dot.active {
+  background-color: #ffffff;
+  width: 48rpx;
+}
+
+.indicator-dot.read {
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 12rpx;
+}
+
+/* 深色背景变体 */
+.progress-indicator.dark .indicator-dot {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.progress-indicator.dark .indicator-dot.active {
+  background-color: #333333;
+}
+
+.progress-indicator.dark .indicator-dot.read {
+  background-color: rgba(0, 0, 0, 0.4);
+}

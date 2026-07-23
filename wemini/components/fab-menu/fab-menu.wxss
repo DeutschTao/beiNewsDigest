@@ -1,0 +1,144 @@
+/* FAB 悬浮菜单组件样式 */
+
+.fab-menu {
+  position: fixed;
+  right: 32rpx;
+  bottom: 120rpx;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* 遮罩层 */
+.fab-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 998;
+}
+
+.fab-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 菜单项容器 */
+.fab-actions {
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+/* 单个菜单项 */
+.fab-action {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(50rpx) translateY(20rpx);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.fab-action.show {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* 菜单项延迟动画 - 从下往上依次展开 */
+.fab-action.action-3.show {
+  transition-delay: 0ms;
+}
+
+.fab-action.action-2.show {
+  transition-delay: 50ms;
+}
+
+.fab-action.action-1.show {
+  transition-delay: 100ms;
+}
+
+.fab-action:active .action-icon {
+  transform: scale(0.9);
+}
+
+/* 菜单项图标 */
+.action-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  transition: transform 0.2s ease;
+}
+
+.action-icon text {
+  font-size: 36rpx;
+}
+
+/* 菜单项标签 */
+.action-label {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 12rpx 20rpx;
+  border-radius: 8rpx;
+  margin-right: 16rpx;
+  white-space: nowrap;
+}
+
+/* 主按钮 */
+.fab-main {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #333333 0%, #4a4a4a 100%);
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.fab-main:active,
+.fab-main-hover {
+  transform: scale(0.95);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.3);
+}
+
+.fab-main.active {
+  background: linear-gradient(135deg, #4a4a4a 0%, #333333 100%);
+}
+
+.fab-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-plus {
+  font-size: 24rpx;
+  color: #ffffff;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.icon-plus.rotate {
+  transform: rotate(45deg);
+}

@@ -1,0 +1,45 @@
+/* 引述 Atom 组件样式 */
+
+.quote-atom {
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+  border-left: 8rpx solid #333333;
+  border-radius: 0 24rpx 24rpx 0;
+}
+
+.quote-content {
+  position: relative;
+  padding-left: 48rpx;
+}
+
+.quote-mark {
+  position: absolute;
+  left: 0;
+  top: -20rpx;
+  font-size: 96rpx;
+  color: #333333;
+  opacity: 0.15;
+  line-height: 1;
+  font-family: Georgia, serif;
+}
+
+.quote-text {
+  display: block;
+  font-size: 36rpx;
+  font-style: italic;
+  color: #1a1a1a;
+  line-height: 1.6;
+  margin-bottom: 24rpx;
+}
+
+.quote-author {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 28rpx;
+  font-style: normal;
+  color: #666666;
+}
+
+.quote-role {
+  color: #999999;
+}

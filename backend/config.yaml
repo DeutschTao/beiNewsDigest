@@ -1,0 +1,110 @@
+# ============== 基础服务 ==============
+server:
+  host: 0.0.0.0
+  port: 8001
+  reload: true
+  log_level: info
+
+# ============== 数据库 ==============
+database:
+  url: sqlite:///./data/bei_news_v2.db
+  echo: false
+
+# ============== 抓取配置 ==============
+fetch:
+  proxy_enabled: true
+  proxy: http://127.0.0.1:7890
+  timeout: 30
+  max_items_per_source: 50
+  min_source_interval: 600
+  jitter_seconds: 30
+  rate_limit_seconds: [5, 30]
+
+  # 分时段调度
+  schedule:
+    - { start: "06:00", end: "10:00", interval_minutes: 30 }
+    - { start: "10:00", end: "18:00", interval_minutes: 60 }
+    - { start: "18:00", end: "23:00", interval_minutes: 30 }
+    - { start: "23:00", end: "06:00", interval_minutes: 180 }
+
+# ============== 数据保留 ==============
+news_expiry:
+  home_window_hours: 24
+  list_window_hours: 168
+  max_age_hours: 48
+  content_cache_hours: 24
+  retention_days: 7
+
+# ============== 预设新闻源 ==============
+news_sources:
+  bbc:
+    type: crawler
+    name: BBC News
+    homepage: https://www.bbc.com/news
+    category: world
+    crawler_class: BBCCrawler
+    is_recommended: true
+    display_order: 1
+    enabled: true
+
+  cnn:
+    type: crawler
+    name: CNN World
+    homepage: https://www.cnn.com/world
+    category: world
+    crawler_class: CNNCrawler
+    is_recommended: true
+    display_order: 2
+    enabled: true
+
+  aljazeera:
+    type: crawler
+    name: Al Jazeera
+    homepage: https://www.aljazeera.com/news/
+    category: world
+    crawler_class: AlJazeeraCrawler
+    is_recommended: true
+    display_order: 3
+    enabled: true
+
+  ap:
+    type: crawler
+    name: AP News (World)
+    homepage: https://apnews.com/world-news
+    category: world
+    crawler_class: APCrawler
+    is_recommended: true
+    display_order: 4
+    enabled: true
+
+  reuters:
+    type: rss
+    name: Reuters (via Google News)
+    homepage: https://news.google.com/search?q=reuters&hl=en
+    rss_url: https://news.google.com/rss/search?q=site:reuters.com&hl=en-US&gl=US&ceid=US:en
+    category: world
+    is_recommended: true
+    display_order: 5
+    enabled: true
+
+# ============== 内容抓取器 ==============
+content_fetcher:
+  enabled: true
+  proxy_enabled: true
+  proxy: http://127.0.0.1:7890
+  timeout: 30
+  user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
+  # 是否强制拉取正文（开启时无视 summary 长度，关闭时走 summary_length_threshold 策略）
+  force_fetch: false
+  # summary 长度低于此阈值时才拉取正文（仅在 force_fetch=false 时生效）
+  summary_length_threshold: 300
+
+# ============== 调度器 ==============
+scheduler:
+  enabled: true
+  cleanup_cron: "0 5 * * *"
+
+# ============== API 限制 ==============
+api:
+  max_sources: 50
+  custom_source_validate_timeout: 8

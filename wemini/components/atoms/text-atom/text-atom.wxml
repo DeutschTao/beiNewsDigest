@@ -1,0 +1,20 @@
+<!-- 文本 Atom 组件 -->
+<base-atom type="text" delay="{{delay}}">
+  <view class="text-atom">
+    <view class="atom-header">
+      <text class="atom-icon">📝</text>
+      <text class="atom-title">摘要要点</text>
+    </view>
+    <view class="points-list">
+      <view 
+        wx:for="{{points}}" 
+        wx:key="index" 
+        class="point-item atom-fade-in"
+        style="animation-delay: {{delay + index * 100}}ms"
+      >
+        <text class="point-bullet">•</text>
+        <text class="point-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+</base-atom>

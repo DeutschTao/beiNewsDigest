@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "progress-indicator": "/components/progress-indicator/progress-indicator"
+  }
+}

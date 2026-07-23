@@ -1,0 +1,10 @@
+<!-- Digest 底部组件 -->
+<view class="digest-footer">
+  <!-- 进度指示器 -->
+  <progress-indicator 
+    wx:if="{{showProgress && total > 0}}"
+    current="{{currentIndex}}"
+    total="{{total}}"
+  />
+
+</view>

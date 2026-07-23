@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "digest-header": "/components/digest-header/digest-header",
+    "digest-card": "/components/digest-card/digest-card",
+    "digest-footer": "/components/digest-footer/digest-footer",
+    "fab-menu": "/components/fab-menu/fab-menu",
+    "skeleton-card": "/components/skeleton-card/skeleton-card",
+    "empty-state": "/components/empty-state/empty-state"
+  },
+  "navigationBarTitleText": "Bei News Digest",
+  "navigationStyle": "custom"
+}

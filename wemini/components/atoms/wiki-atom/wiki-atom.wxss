@@ -1,0 +1,75 @@
+/* 百科词条 Atom 组件样式 */
+
+.wiki-atom {
+  background-color: #ffffff;
+}
+
+.atom-header {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.atom-icon {
+  font-size: 36rpx;
+}
+
+.atom-title {
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #666666;
+}
+
+.expand-icon {
+  font-size: 24rpx;
+  color: #999999;
+  transition: transform 0.3s ease;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.wiki-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16rpx;
+}
+
+.wiki-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.wiki-content.show {
+  max-height: 500rpx;
+}
+
+.wiki-summary {
+  display: block;
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 24rpx;
+}
+
+.wiki-link {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 28rpx;
+  color: #333333;
+  cursor: pointer;
+}
+
+.wiki-link:active {
+  opacity: 0.7;
+}
+
+.link-arrow {
+  font-size: 24rpx;
+}

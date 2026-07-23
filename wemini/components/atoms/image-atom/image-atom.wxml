@@ -1,0 +1,33 @@
+<!-- 图片 Atom 组件 -->
+<base-atom type="image" delay="{{delay}}">
+  <view class="image-atom">
+    <view class="atom-header">
+      <text class="atom-icon">🖼️</text>
+      <text class="atom-title">相关图片</text>
+    </view>
+    <scroll-view scroll-x class="image-scroll" enhanced show-scrollbar="{{false}}">
+      <view class="image-list">
+        <view
+          wx:for="{{images}}"
+          wx:key="index"
+          class="image-item atom-fade-in"
+          style="animation-delay: {{delay + index * 100}}ms"
+          bindtap="onPreviewImage"
+          data-index="{{index}}"
+        >
+          <image
+            src="{{item}}"
+            mode="aspectFill"
+            lazy-load
+            class="image {{imageErrors[index] ? 'hidden' : ''}}"
+            binderror="onImageError"
+            data-index="{{index}}"
+          ></image>
+          <view wx:if="{{imageErrors[index]}}" class="image-placeholder">
+            <text class="placeholder-icon">🖼️</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</base-atom>

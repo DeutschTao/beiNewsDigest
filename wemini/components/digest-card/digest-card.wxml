@@ -1,0 +1,30 @@
+<!-- Digest 卡片组件 -->
+<view class="digest-card" bindtap="onCardTap">
+  <!-- 背景图 -->
+  <image
+    class="card-bg {{imageError ? 'hidden' : ''}}"
+    src="{{news.coverImage || news.cover_image}}"
+    mode="aspectFill"
+    binderror="onImageError"
+  ></image>
+
+  <!-- 图片加载失败占位图 -->
+  <view wx:if="{{imageError}}" class="card-placeholder">
+    <text class="placeholder-icon">📰</text>
+  </view>
+
+  <!-- 渐变遮罩 -->
+  <view class="card-overlay"></view>
+
+  <!-- 内容区 -->
+  <view class="card-content">
+    <view class="card-title-wrapper">
+      <text class="card-title">{{news.title}}</text>
+    </view>
+    <view class="card-meta">
+      <text class="card-source">{{news.source || news.source_name}}</text>
+      <text class="card-dot">·</text>
+      <text class="card-time">{{formattedTime}}</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,128 @@
+<!-- 新闻详情页 -->
+<view class="detail-page">
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在加载...</text>
+  </view>
+
+  <!-- 错误状态 -->
+  <view wx:elif="{{error}}" class="error-container">
+    <empty-state
+      type="error"
+      title="加载失败"
+      description="{{error}}"
+      showAction="{{true}}"
+      actionText="重试"
+      bind:action="loadNewsDetail"
+    />
+  </view>
+
+  <!-- 内容 -->
+  <view wx:else class="detail-content">
+    <!-- AI 处理中 -->
+    <view wx:if="{{processing}}" class="processing-container">
+      <view class="processing-animation">
+        <view class="processing-dot"></view>
+        <view class="processing-dot"></view>
+        <view class="processing-dot"></view>
+      </view>
+      <text class="processing-text">正在分析新闻...</text>
+    </view>
+
+    <!-- 新闻内容 -->
+    <block wx:else>
+      <!-- 封面图 -->
+      <view class="cover-section">
+        <image
+          wx:if="{{(detail.coverImage || detail.cover_image) && !coverError}}"
+          class="cover-image"
+          src="{{detail.coverImage || detail.cover_image}}"
+          mode="aspectFill"
+          binderror="onCoverError"
+          bindtap="onPreviewCover"
+        ></image>
+        <view wx:else class="cover-placeholder">
+          <text class="placeholder-icon">📰</text>
+        </view>
+        <view class="cover-overlay"></view>
+      </view>
+
+      <!-- 新闻头部 -->
+      <view class="news-header">
+        <text class="news-title">{{detail.title}}</text>
+        <view class="news-meta">
+          <text class="news-source">{{detail.source || detail.source_name}}</text>
+          <text class="meta-dot">·</text>
+          <text class="news-time">{{formattedTime}}</text>
+        </view>
+      </view>
+
+      <!-- Atoms 内容 -->
+      <view class="atoms-section">
+        <block wx:for="{{detail.atoms}}" wx:key="index">
+          <!-- 文本 Atom -->
+          <text-atom 
+            wx:if="{{item.type === 'text'}}"
+            points="{{item.points || []}}"
+            delay="{{index * 100}}"
+          />
+
+          <!-- 引述 Atom -->
+          <quote-atom 
+            wx:elif="{{item.type === 'quote'}}"
+            quote="{{item.quote}}"
+            author="{{item.author}}"
+            role="{{item.role}}"
+            delay="{{index * 100}}"
+          />
+
+          <!-- 百科 Atom -->
+          <wiki-atom 
+            wx:elif="{{item.type === 'wiki'}}"
+            title="{{item.title}}"
+            summary="{{item.summary}}"
+            url="{{item.url}}"
+            delay="{{index * 100}}"
+          />
+
+          <!-- 图片 Atom -->
+          <image-atom 
+            wx:elif="{{item.type === 'image'}}"
+            images="{{item.images || []}}"
+            delay="{{index * 100}}"
+          />
+
+          <!-- 地图 Atom -->
+          <map-atom 
+            wx:elif="{{item.type === 'map'}}"
+            location="{{item.location}}"
+            description="{{item.description}}"
+            latitude="{{item.latitude}}"
+            longitude="{{item.longitude}}"
+            delay="{{index * 100}}"
+          />
+
+          <!-- 时间线 Atom -->
+          <timeline-atom 
+            wx:elif="{{item.type === 'timeline'}}"
+            events="{{item.events || []}}"
+            delay="{{index * 100}}"
+          />
+        </block>
+
+        <!-- 没有 Atoms 时显示提示 -->
+        <view wx:if="{{detail.atoms && detail.atoms.length === 0}}" class="no-atoms">
+          <text>暂无摘要信息</text>
+        </view>
+      </view>
+
+      <!-- 原文链接 -->
+      <view class="original-link" bindtap="onOpenOriginal">
+        <text class="link-icon">🔗</text>
+        <text class="link-text">查看原文</text>
+        <text class="link-arrow">→</text>
+      </view>
+    </block>
+  </view>
+</view>
