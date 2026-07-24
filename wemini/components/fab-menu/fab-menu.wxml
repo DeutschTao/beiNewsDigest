@@ -18,7 +18,7 @@
       <view class="action-icon refresh-icon">
         <text>🔄</text>
       </view>
-      <view class="action-label">刷新</view>
+      <view class="action-label">拉新闻</view>
     </view>
 
     <!-- 全部新闻 -->

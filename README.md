@@ -175,3 +175,24 @@ beiNewsDigest/
 ## 联系与变更
 
 如对设计有调整，请直接编辑两份技术方案 + 本 README 的"待定项"段落。
+
+
+## 服务器部署清库重启
+
+可以整个 backend/ 目录都传上去，但以下几个不需要传：
+
+文件/目录	说明
+venv/	虚拟环境，服务器有自己的 Python 环境
+__pycache__/	Python 缓存，自动生成
+.DS_Store	macOS 系统文件
+
+# 0. 装包
+/root/miniconda3/envs/beinews/bin/pip install -r /root/beinews/version2/backend/requirements.txt
+# 1. 删除旧的数据库文件
+rm /root/beinews/version2/backend/data/bei_news_v2.db*
+
+# 2. 重启服务（会自动重新创建数据库并 seed）
+supervisorctl restart beinews-v2
+
+# 3. 查看启动日志确认正常
+supervisorctl status beinews-v2

@@ -5,8 +5,8 @@
 const app = getApp();
 
 // API 基础地址（v2）
-const API_BASE = 'http://localhost:8001/api/v2';
-// const API_BASE = 'https://static.youngtao.wang/api/v2';
+// const API_BASE = 'http://localhost:8001/api/v2';
+const API_BASE = 'https://static.youngtao.wang/api/v2';
 
 /**
  * 请求封装
