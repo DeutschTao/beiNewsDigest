@@ -1,0 +1,64 @@
+# ============================
+# Python
+# ============================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.db
+*.db-shm
+*.db-wal
+
+# virtual env
+venv/
+.venv/
+ENV/
+env/
+.env
+
+# ============================
+# Logs
+# ============================
+*.log
+logs/
+data/logs/
+
+# ============================
+# IDE / OS
+# ============================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ============================
+# WeChat Mini Program
+# ============================
+# 本地私有配置（包含 appid、调试信息等，不要提交）
+project.private.config.json
+
+
+# 依赖
+node_modules/
+
+# ============================
+# Debug / Test scripts
+# ============================
+backend/debug_*.py
+backend/test_*.py
+
+# ============================
+# Misc
+# =========================---
+*.tmp
+*.bak
+*.cache

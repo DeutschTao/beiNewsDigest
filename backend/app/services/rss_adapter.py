@@ -81,5 +81,15 @@ class RSSAdapter(BaseCrawler):
         return result
 
     async def fetch_content(self, url: str) -> Optional[str]:
-        """RSS articles generally don't have fetchable body. Returns None."""
-        return None
+        """RSS 源的详情 URL 可以直接抓取全文。
+
+        尝试用父类方法抓取 HTML 并提取正文。
+        """
+        try:
+            async with self._new_client() as client:
+                resp = await client.get(url)
+                resp.raise_for_status()
+                return self._extract_content_html(resp.text)
+        except Exception as e:
+            logger.warning(f"RSSAdapter fetch_content failed for {url[:60]}: {e}")
+            return None
