@@ -2,12 +2,13 @@
 <view class="all-news-page">
   <!-- 顶部 Tab 栏 -->
   <view wx:if="{{sources.length > 0}}" class="tab-bar">
-    <scroll-view scroll-x class="tab-scroll" show-scrollbar="{{false}}">
+    <scroll-view scroll-x class="tab-scroll" scroll-left="{{scrollLeft}}">
       <view
         wx:for="{{sources}}"
         wx:key="id"
-        class="tab-item {{activeSourceId === item.id ? 'active' : ''}}"
+        class="tab-item {{activeIndex === index ? 'active' : ''}}"
         bindtap="onTabChange"
+        data-index="{{index}}"
         data-id="{{item.id}}"
       >
         <text class="tab-text">{{item.name}}</text>
@@ -15,70 +16,91 @@
     </scroll-view>
   </view>
 
-  <!-- 加载状态 -->
-  <view wx:if="{{loading && list.length === 0}}" class="loading-container">
+  <!-- 加载状态（仅初始时显示） -->
+  <view wx:if="{{loading}}" class="loading-container">
     <view class="loading-spinner"></view>
   </view>
 
-  <!-- 新闻列表 -->
-  <scroll-view
+  <!-- Tab 内容区：使用 swiper 实现左右滑动切换 -->
+  <swiper
     wx:else
-    scroll-y
-    class="news-list"
-    bindscrolltolower="onLoadMore"
-    enable-back-to-top
+    class="tab-swiper"
+    style="height: {{swiperHeight}}px"
+    current="{{activeIndex}}"
+    duration="250"
+    bindchange="onSwiperChange"
   >
-    <view 
-      wx:for="{{list}}" 
-      wx:key="id"
-      class="news-item"
-      bindtap="onItemTap"
-      data-item="{{item}}"
-    >
-      <!-- 缩略图 -->
-      <view class="item-thumb" wx:if="{{item.cover_image && !item._imgError}}">
-        <image 
-          src="{{item.cover_image}}" 
-          mode="aspectFill"
-          lazy-load
-          data-id="{{item.id}}"
-          binderror="onItemImageError"
-        ></image>
-      </view>
-      <view wx:else class="item-thumb item-thumb-placeholder">
-        <text class="thumb-placeholder-icon">📰</text>
-      </view>
-      <!-- 内容 -->
-      <view class="item-body {{item.cover_image ? '' : 'no-thumb'}}">
-        <text class="item-title">{{item.title}}</text>
-        <view class="item-meta">
-          <text class="item-source">{{item.source_name}}</text>
-          <text class="item-time">{{item.formattedTime}}</text>
-        </view>
-      </view>
-    </view>
+    <!-- 每个 Source 对应一个 swiper-item -->
+    <block wx:for="{{sources}}" wx:for-item="source" wx:key="id">
+      <swiper-item class="swiper-item-panel">
+        <scroll-view
+          scroll-y
+          class="news-list"
+          bindscrolltolower="onLoadMore"
+          enable-back-to-top
+          data-source-index="{{index}}"
+        >
+          <!-- 该 Tab 的新闻列表：直接用 newsLists[index] 下标访问 -->
+          <view
+            wx:for="{{newsLists[index]}}"
+            wx:key="id"
+            class="news-item"
+            bindtap="onItemTap"
+            data-item="{{item}}"
+          >
+            <!-- 缩略图 -->
+            <view class="item-thumb" wx:if="{{item.cover_image && !item._imgError}}">
+              <image
+                src="{{item.cover_image}}"
+                mode="aspectFill"
+                lazy-load
+                data-id="{{item.id}}"
+                binderror="onItemImageError"
+              ></image>
+            </view>
+            <view wx:else class="item-thumb item-thumb-placeholder">
+              <text class="thumb-placeholder-icon">📰</text>
+            </view>
+            <!-- 内容 -->
+            <view class="item-body {{item.cover_image ? '' : 'no-thumb'}}">
+              <text class="item-title">{{item.title}}</text>
+              <view class="item-meta">
+                <text class="item-source">{{item.source_name}}</text>
+                <text class="item-time">{{item.formattedTime}}</text>
+              </view>
+            </view>
+          </view>
 
-    <!-- 加载更多 -->
-    <view wx:if="{{hasMore}}" class="load-more" bindtap="onLoadMore">
-      <text wx:if="{{loadingMore}}" class="loading-text">加载中...</text>
-      <text wx:else class="load-text">加载更多</text>
-    </view>
+          <!-- 加载中（Tab 加载中 + 新闻列表加载中） -->
+          <view wx:if="{{loading || newsLoading[index]}}" class="loading-container">
+            <view class="loading-spinner"></view>
+          </view>
 
-    <!-- 没有更多 -->
-    <view wx:if="{{!hasMore && list.length > 0}}" class="no-more">
-      <text>— 已加载全部 —</text>
-    </view>
-
-    <!-- 空状态 -->
-    <view wx:if="{{list.length === 0 && !loading}}" class="empty-wrapper">
-      <empty-state
-        type="no-data"
-        title="暂无新闻"
-        description="暂时没有新闻内容"
-        showAction="{{true}}"
-        actionText="刷新"
-        bind:action="onRefresh"
-      />
-    </view>
-  </scroll-view>
+          <!-- 加载更多 / 没有更多 / 空状态 -->
+          <block wx:elif="{{newsLists[index].length > 0}}">
+            <!-- 加载更多 -->
+            <view class="load-more" bindtap="onLoadMore">
+              <view wx:if="{{newsLoadingMore[index]}}" class="loading-spinner"></view>
+              <text wx:elif="{{newsHasMore[index]}}" class="load-text">加载更多</text>
+            </view>
+            <!-- 没有更多 -->
+            <view wx:if="{{!newsHasMore[index] && newsLists[index].length > 0}}" class="no-more">
+              <text>— 已加载全部 —</text>
+            </view>
+            <!-- 空状态（加载完成后无数据） -->
+            <view wx:if="{{newsLists[index].length === 0}}" class="empty-wrapper">
+              <empty-state
+                type="no-data"
+                title="暂无新闻"
+                description="暂时没有新闻内容"
+                showAction="{{true}}"
+                actionText="刷新"
+                bind:action="onRefresh"
+              />
+            </view>
+          </block>
+        </scroll-view>
+      </swiper-item>
+    </block>
+  </swiper>
 </view>

@@ -65,7 +65,7 @@
 
 /* 新闻列表 */
 .news-list {
-  flex: 1;
+  height: 100%;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -150,10 +150,19 @@
   color: #666666;
 }
 
-/* 加载更多 */
-.load-more,
+/* 空状态 */
+.empty-wrapper {
+  padding: 100rpx 0;
+}
 .no-more {
   text-align: center;
+  padding: 48rpx 32rpx;
+}
+
+.load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 48rpx 32rpx;
 }
 
@@ -168,7 +177,18 @@
   color: #999999;
 }
 
-/* 空状态 */
-.empty-wrapper {
-  padding: 100rpx 0;
+/* Tab 内容区：Swiper */
+.tab-swiper {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.swiper-item-panel {
+  height: 100%;
+}
+
+.swiper-item-panel .news-list {
+  height: 100%;
+  overflow-y: auto;
 }
