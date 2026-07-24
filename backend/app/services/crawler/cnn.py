@@ -60,9 +60,24 @@ class CNNCrawler(BaseCrawler):
                     continue
                 seen_urls.add(href)
 
-                title_el = art.select_one("h1, h2, h3, [class*='headline'], [class*='title']")
-                title = (title_el.get_text(strip=True) if title_el else "").strip()
-                # 过滤噪音标题：太短或包含图片来源署名
+                # CNN 的 card 可能是多条目聚合容器，标题提取策略：
+                # 1. 优先取 span[class*='container']（精确的文章标题）
+                # 2. 否则在 card 内找文本长度合适的 a 标签
+                # 3. 最后回退到 h1/h2/h3
+                title = ""
+                span_el = art.select_one("span[class*='container']")
+                if span_el:
+                    title = span_el.get_text(strip=True)
+                if not title or len(title) < 10:
+                    for link_a in art.select("a[href]"):
+                        t = link_a.get_text(strip=True)
+                        cls = " ".join(link_a.get("class", []))
+                        if len(t) >= 10 and "image" not in cls and "media" not in cls and "logo" not in cls:
+                            title = t
+                            break
+                if not title or len(title) < 10:
+                    title_el = art.select_one("h1, h2, h3, [class*='headline'], [class*='title']")
+                    title = (title_el.get_text(strip=True) if title_el else "").strip()
                 if not title or len(title) < 10:
                     continue
                 if _TITLE_NOISE_PATTERNS.search(title) and len(title) < 30:

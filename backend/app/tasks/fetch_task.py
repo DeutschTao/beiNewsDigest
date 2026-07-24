@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from ..config import AppConfig
 from ..models import NewsArticle, NewsSource
+from ..models.news_article import compute_sort_at
 from ..services.source_dispatcher import get_crawler
 from ..services.crawler.base import SourceConfig
 from ..utils.logger import logger
@@ -79,6 +80,9 @@ async def _fetch_one_source(
             continue
         seen_hashes.add(uhash)
 
+        fetched_at = _now()
+        sort_at = compute_sort_at(item.published_at, fetched_at)
+
         # Upsert (idempotent on url_hash)
         existing = db.query(NewsArticle).filter_by(url_hash=uhash).first()
         if existing:
@@ -88,6 +92,7 @@ async def _fetch_one_source(
             existing.cover_image = item.cover_image or existing.cover_image
             existing.author = item.author or existing.author
             existing.published_at = item.published_at or existing.published_at
+            existing.sort_at = compute_sort_at(existing.published_at, existing.fetched_at)
             skipped += 1
             continue
 
@@ -100,7 +105,8 @@ async def _fetch_one_source(
             cover_image=item.cover_image,
             author=item.author,
             published_at=item.published_at,
-            fetched_at=_now(),
+            fetched_at=fetched_at,
+            sort_at=sort_at,
             position=item.position,
         ))
         inserted += 1

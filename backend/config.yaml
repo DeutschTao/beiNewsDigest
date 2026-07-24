@@ -95,7 +95,7 @@ content_fetcher:
   timeout: 30
   user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36"
   # 是否强制拉取正文（开启时无视 summary 长度，关闭时走 summary_length_threshold 策略）
-  force_fetch: false
+  force_fetch: true
   # summary 长度低于此阈值时才拉取正文（仅在 force_fetch=false 时生效）
   summary_length_threshold: 300
 

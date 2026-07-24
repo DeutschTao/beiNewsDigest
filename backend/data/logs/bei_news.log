@@ -549,3 +549,236 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2026-07-23 17:02:00 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
 2026-07-23 17:02:15 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
 2026-07-23 17:13:48 | INFO    | bei_news.content_fetcher | Cached full content for article 223, expires at 2026-07-24T09:13:48Z
+2026-07-24 09:36:09 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:36:09 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 09:36:09 | INFO    | bei_news | Database tables created successfully
+2026-07-24 09:36:09 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 09:36:09 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 09:36:09 | INFO    | bei_news | Scheduler started
+2026-07-24 09:36:09 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 09:37:17 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 09:37:17 | INFO    | bei_news | App shutdown
+2026-07-24 09:37:17 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:37:18 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 09:37:18 | INFO    | bei_news | Database tables created successfully
+2026-07-24 09:37:18 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 09:37:18 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 09:37:18 | INFO    | bei_news | Scheduler started
+2026-07-24 09:37:18 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 09:38:42 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:38:43 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:38:43 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 09:38:43 | INFO    | bei_news | Database tables created successfully
+2026-07-24 09:38:43 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 09:38:43 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 09:38:43 | INFO    | bei_news | Scheduler started
+2026-07-24 09:38:43 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 09:41:06 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:41:06 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:41:06 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 09:41:06 | INFO    | bei_news | Database tables created successfully
+2026-07-24 09:41:06 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 09:41:06 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 09:41:06 | INFO    | bei_news | Scheduler started
+2026-07-24 09:41:06 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 09:41:59 | INFO    | bei_news.content_fetcher | Cached full content for article 294, expires at 2026-07-25T01:41:59Z
+2026-07-24 09:58:22 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 09:58:22 | INFO    | bei_news | App shutdown
+2026-07-24 09:58:23 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:58:23 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 09:58:23 | INFO    | bei_news | Database tables created successfully
+2026-07-24 09:58:23 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 09:58:23 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 09:58:23 | INFO    | bei_news | Scheduler started
+2026-07-24 09:58:23 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 09:59:44 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 09:59:44 | INFO    | bei_news | App shutdown
+2026-07-24 09:59:44 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 09:59:44 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 09:59:44 | INFO    | bei_news | Database tables created successfully
+2026-07-24 09:59:44 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 09:59:44 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 09:59:44 | INFO    | bei_news | Scheduler started
+2026-07-24 09:59:44 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:02:09 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 10:02:09 | INFO    | bei_news | App shutdown
+2026-07-24 10:02:10 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:02:10 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:02:10 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:02:10 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 10:02:10 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:02:10 | INFO    | bei_news | Scheduler started
+2026-07-24 10:02:10 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:04:20 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 10:04:20 | INFO    | bei_news | App shutdown
+2026-07-24 10:04:21 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:04:21 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:04:21 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:04:21 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 10:04:21 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:04:21 | INFO    | bei_news | Scheduler started
+2026-07-24 10:04:21 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:06:34 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 10:06:34 | INFO    | bei_news | App shutdown
+2026-07-24 10:06:34 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:06:34 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:06:34 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:06:34 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 10:06:34 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:06:34 | INFO    | bei_news | Scheduler started
+2026-07-24 10:06:34 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:07:17 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 10:07:17 | INFO    | bei_news | App shutdown
+2026-07-24 10:07:17 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:07:17 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:07:17 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:07:17 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 10:07:17 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:07:17 | INFO    | bei_news | Scheduler started
+2026-07-24 10:07:17 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:08:12 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:08:12 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:08:13 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:08:13 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:08:13 | INFO    | bei_news | Seeded 5 preset news sources from config
+2026-07-24 10:08:13 | INFO    | bei_news | Database initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:08:13 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:08:13 | INFO    | bei_news | Scheduler started
+2026-07-24 10:08:13 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:08:18 | INFO    | bei_news.crawler.bbc | BBC fetched 34 items
+2026-07-24 10:08:18 | INFO    | bei_news | fetch[bbc]: {'source': 'bbc', 'status': 'ok', 'fetched': 34, 'inserted': 34, 'skipped': 0}
+2026-07-24 10:08:32 | INFO    | bei_news.crawler.cnn | CNN fetched 50 items
+2026-07-24 10:08:33 | INFO    | bei_news | fetch[cnn]: {'source': 'cnn', 'status': 'ok', 'fetched': 50, 'inserted': 50, 'skipped': 0}
+2026-07-24 10:08:50 | INFO    | bei_news.crawler.aljazeera | Al Jazeera fetched 16 items
+2026-07-24 10:08:50 | INFO    | bei_news | fetch[aljazeera]: {'source': 'aljazeera', 'status': 'ok', 'fetched': 16, 'inserted': 16, 'skipped': 0}
+2026-07-24 10:09:07 | INFO    | bei_news.crawler.ap | AP fetched 50 items
+2026-07-24 10:09:07 | INFO    | bei_news | fetch[ap]: {'source': 'ap', 'status': 'ok', 'fetched': 50, 'inserted': 50, 'skipped': 0}
+2026-07-24 10:09:18 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 50 items for reuters
+2026-07-24 10:09:18 | INFO    | bei_news | fetch[reuters]: {'source': 'reuters', 'status': 'ok', 'fetched': 50, 'inserted': 50, 'skipped': 0}
+2026-07-24 10:21:29 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:21:29 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:21:30 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:21:30 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:21:30 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 10:21:30 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:21:30 | INFO    | bei_news | Scheduler started
+2026-07-24 10:21:30 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:36:05 | INFO    | bei_news.crawler.bbc | BBC fetched 33 items
+2026-07-24 10:36:05 | INFO    | bei_news | fetch[bbc]: {'source': 'bbc', 'status': 'ok', 'fetched': 33, 'inserted': 1, 'skipped': 32}
+2026-07-24 10:36:30 | INFO    | bei_news.crawler.cnn | CNN fetched 50 items
+2026-07-24 10:36:30 | INFO    | bei_news | fetch[cnn]: {'source': 'cnn', 'status': 'ok', 'fetched': 50, 'inserted': 0, 'skipped': 50}
+2026-07-24 10:36:59 | INFO    | bei_news.crawler.aljazeera | Al Jazeera fetched 16 items
+2026-07-24 10:36:59 | INFO    | bei_news | fetch[aljazeera]: {'source': 'aljazeera', 'status': 'ok', 'fetched': 16, 'inserted': 2, 'skipped': 14}
+2026-07-24 10:37:11 | INFO    | bei_news.crawler.ap | AP fetched 50 items
+2026-07-24 10:37:11 | INFO    | bei_news | fetch[ap]: {'source': 'ap', 'status': 'ok', 'fetched': 50, 'inserted': 2, 'skipped': 48}
+2026-07-24 10:37:23 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 50 items for reuters
+2026-07-24 10:37:23 | INFO    | bei_news | fetch[reuters]: {'source': 'reuters', 'status': 'ok', 'fetched': 50, 'inserted': 2, 'skipped': 48}
+2026-07-24 10:42:29 | INFO    | bei_news.content_fetcher | Cached full content for article 72, expires at 2026-07-25T02:42:29Z
+2026-07-24 10:44:34 | INFO    | bei_news.content_fetcher | Cached full content for article 71, expires at 2026-07-25T02:44:34Z
+2026-07-24 10:57:08 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 45 items for validate
+2026-07-24 10:57:08 | INFO    | bei_news | Added custom source: The Guardian (code=custom_the_guardian, type=rss)
+2026-07-24 10:57:13 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 45 items for custom_the_guardian
+2026-07-24 10:57:26 | INFO    | bei_news.crawler.bbc | BBC fetched 34 items
+2026-07-24 10:57:26 | INFO    | bei_news | fetch[bbc]: {'source': 'bbc', 'status': 'ok', 'fetched': 34, 'inserted': 1, 'skipped': 33}
+2026-07-24 10:57:52 | INFO    | bei_news.crawler.cnn | CNN fetched 50 items
+2026-07-24 10:57:52 | INFO    | bei_news | fetch[cnn]: {'source': 'cnn', 'status': 'ok', 'fetched': 50, 'inserted': 0, 'skipped': 50}
+2026-07-24 10:58:03 | INFO    | bei_news.crawler.aljazeera | Al Jazeera fetched 16 items
+2026-07-24 10:58:03 | INFO    | bei_news | fetch[aljazeera]: {'source': 'aljazeera', 'status': 'ok', 'fetched': 16, 'inserted': 0, 'skipped': 16}
+2026-07-24 10:58:11 | INFO    | bei_news.crawler.ap | AP fetched 50 items
+2026-07-24 10:58:11 | INFO    | bei_news | fetch[ap]: {'source': 'ap', 'status': 'ok', 'fetched': 50, 'inserted': 0, 'skipped': 50}
+2026-07-24 10:58:35 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 50 items for reuters
+2026-07-24 10:58:35 | INFO    | bei_news | fetch[reuters]: {'source': 'reuters', 'status': 'ok', 'fetched': 50, 'inserted': 3, 'skipped': 47}
+2026-07-24 10:59:02 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 45 items for custom_the_guardian
+2026-07-24 10:59:02 | INFO    | bei_news | fetch[custom_the_guardian]: {'source': 'custom_the_guardian', 'status': 'ok', 'fetched': 45, 'inserted': 40, 'skipped': 5}
+2026-07-24 10:59:02 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 10:59:02 | INFO    | bei_news | App shutdown
+2026-07-24 10:59:02 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:59:02 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:59:02 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:59:02 | INFO    | bei_news | Database already has 6 sources, skipping seed
+2026-07-24 10:59:02 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:59:02 | INFO    | bei_news | Scheduler started
+2026-07-24 10:59:02 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:59:32 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:59:32 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:59:32 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 10:59:32 | INFO    | bei_news | Database tables created successfully
+2026-07-24 10:59:32 | INFO    | bei_news | Seeded 5 preset news sources from config
+2026-07-24 10:59:32 | INFO    | bei_news | Database initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 10:59:32 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 10:59:32 | INFO    | bei_news | Scheduler started
+2026-07-24 10:59:32 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 10:59:38 | INFO    | bei_news.crawler.bbc | BBC fetched 34 items
+2026-07-24 10:59:38 | INFO    | bei_news | fetch[bbc]: {'source': 'bbc', 'status': 'ok', 'fetched': 34, 'inserted': 34, 'skipped': 0}
+2026-07-24 11:00:08 | INFO    | bei_news.crawler.cnn | CNN fetched 50 items
+2026-07-24 11:00:08 | INFO    | bei_news | fetch[cnn]: {'source': 'cnn', 'status': 'ok', 'fetched': 50, 'inserted': 50, 'skipped': 0}
+2026-07-24 11:00:30 | INFO    | bei_news.crawler.aljazeera | Al Jazeera fetched 16 items
+2026-07-24 11:00:31 | INFO    | bei_news | fetch[aljazeera]: {'source': 'aljazeera', 'status': 'ok', 'fetched': 16, 'inserted': 16, 'skipped': 0}
+2026-07-24 11:00:51 | INFO    | bei_news.crawler.ap | AP fetched 50 items
+2026-07-24 11:00:51 | INFO    | bei_news | fetch[ap]: {'source': 'ap', 'status': 'ok', 'fetched': 50, 'inserted': 50, 'skipped': 0}
+2026-07-24 11:01:20 | INFO    | bei_news.crawler.rss_adapter | RSSAdapter fetched 50 items for reuters
+2026-07-24 11:01:20 | INFO    | bei_news | fetch[reuters]: {'source': 'reuters', 'status': 'ok', 'fetched': 50, 'inserted': 50, 'skipped': 0}
+2026-07-24 11:21:12 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:21:13 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:21:13 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:21:13 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:21:13 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:21:13 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:21:13 | INFO    | bei_news | Scheduler started
+2026-07-24 11:21:13 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 11:24:16 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 11:24:16 | INFO    | bei_news | App shutdown
+2026-07-24 11:24:16 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:24:16 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:24:16 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:24:16 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:24:16 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:24:16 | INFO    | bei_news | Scheduler started
+2026-07-24 11:24:16 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 11:24:25 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 11:24:25 | INFO    | bei_news | App shutdown
+2026-07-24 11:24:25 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:24:25 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:24:25 | INFO    | bei_news | Installing Playwright Chromium (one-time setup)...
+2026-07-24 11:24:25 | WARNING | bei_news | Playwright Chromium install failed: Command '['/Users/wangyangtao/Documents/ai/code/beiNewsDigest/version2/backend/venv/bin/python', '-m', 'playwright', 'install', 'chromium']' returned non-zero exit status 1.
+2026-07-24 11:24:25 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:24:25 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:24:25 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:24:25 | INFO    | bei_news | Scheduler started
+2026-07-24 11:24:25 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 11:25:32 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 11:25:32 | INFO    | bei_news | App shutdown
+2026-07-24 11:25:32 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:25:32 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:25:32 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:25:32 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:25:32 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:25:32 | INFO    | bei_news | Scheduler started
+2026-07-24 11:25:32 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 11:25:36 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 11:25:36 | INFO    | bei_news | App shutdown
+2026-07-24 11:25:37 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:25:37 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:25:37 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:25:37 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:25:37 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:25:37 | INFO    | bei_news | Scheduler started
+2026-07-24 11:25:37 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 11:25:49 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 11:25:49 | INFO    | bei_news | App shutdown
+2026-07-24 11:25:49 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:25:49 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:25:49 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:25:49 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:25:49 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:25:49 | INFO    | bei_news | Scheduler started
+2026-07-24 11:25:49 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
+2026-07-24 11:25:54 | INFO    | bei_news.scheduler | TimeBasedScheduler stopped
+2026-07-24 11:25:54 | INFO    | bei_news | App shutdown
+2026-07-24 11:25:54 | INFO    | bei_news.database | Database engine initialized: sqlite:///./data/bei_news_v2.db
+2026-07-24 11:25:54 | INFO    | bei_news | App starting, db=sqlite:///./data/bei_news_v2.db, proxy=on
+2026-07-24 11:25:54 | INFO    | bei_news | Database tables created successfully
+2026-07-24 11:25:54 | INFO    | bei_news | Database already has 5 sources, skipping seed
+2026-07-24 11:25:54 | INFO    | bei_news.scheduler | TimeBasedScheduler started
+2026-07-24 11:25:54 | INFO    | bei_news | Scheduler started
+2026-07-24 11:25:54 | INFO    | bei_news.scheduler | Outside all active slots, sleeping 1h before re-checking
