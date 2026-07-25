@@ -40,7 +40,7 @@ news_sources:
   bbc:
     type: crawler
     name: BBC News
-    homepage: https://www.bbc.com/news
+    homepage: https://www.bbc.co.uk/news
     category: world
     crawler_class: BBCCrawler
     is_recommended: true
@@ -50,7 +50,7 @@ news_sources:
   cnn:
     type: crawler
     name: CNN World
-    homepage: https://www.cnn.com/world
+    homepage: https://edition.cnn.com/world
     category: world
     crawler_class: CNNCrawler
     is_recommended: true
@@ -60,7 +60,7 @@ news_sources:
   aljazeera:
     type: crawler
     name: Al Jazeera
-    homepage: https://www.aljazeera.com/news/
+    homepage: https://www.aljazeera.com
     category: world
     crawler_class: AlJazeeraCrawler
     is_recommended: true

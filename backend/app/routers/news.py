@@ -38,7 +38,7 @@ def list_news(
         q = q.filter(NewsArticle.source_id == source_id)
     total = q.count()
     rows = (
-        q.order_by(NewsArticle.sort_at.desc(), NewsArticle.id.desc())
+        q.order_by(NewsArticle.sort_at.desc(), NewsArticle.position.asc())
         .offset((page - 1) * page_size)
         .limit(page_size)
         .all()

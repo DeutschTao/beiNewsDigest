@@ -39,7 +39,7 @@ def get_home(
             .filter(NewsArticle.source_id == src.id)
             .order_by(
                 NewsArticle.sort_at.desc(),
-                NewsArticle.id.desc(),
+                NewsArticle.position.asc(),
             )
             .limit(limit)
             .all()

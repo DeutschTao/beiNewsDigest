@@ -1,4 +1,4 @@
-"""CNN World homepage crawler."""
+"""CNN World homepage crawler (edition.cnn.com/world)."""
 from __future__ import annotations
 
 import re
@@ -7,26 +7,47 @@ from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
 
-from .base import BaseCrawler, CrawlResult, CrawledItem, parse_relative_time, get_logger
+from .base import BaseCrawler, CrawlResult, CrawledItem, get_logger
 
 logger = get_logger("crawler.cnn")
 
-# CNN 页面中常见的噪音标题模式（图片来源署名等）
+# CNN card 中图片署名的噪音模式（不应作为标题）
 _TITLE_NOISE_PATTERNS = re.compile(
     r"(Getty Images|AFP|AFP/Getty|Reuters|AP Photo|EPA|EFE|"
-    r"Press Service|Handout|Pool Photo|Anadolu|"
-    r"Live Updates?\s*|•\s*Live Updates?)",
+    r"Press Service|Handout|Pool Photo|Anadolu)",
     re.IGNORECASE,
 )
 
 
 class CNNCrawler(BaseCrawler):
+    """专抓 https://edition.cnn.com/world 的第一个 zone 模块的新闻卡片。
+
+    卡片 DOM 结构::
+
+        <li class="card container__item container__item--type-media-image ...">
+          <a class="container__link ..." href="/2026/07/24/world/...">
+            <img src="...">
+            图片署名 (噪音)
+          </a>
+          <span class="container__headline-text">新闻标题</span>
+        </li>
+
+    抓取范围：
+    - 页面第一个 zone（data-component-name="zone"）内的所有 li.card
+    - 不包含时间戳（此视图不展示时间）
+    - 不包含摘要（卡片级不提供摘要）
+    """
+
     extra_headers = {
         "Referer": "https://www.google.com/",
     }
 
     URL_FILTERS = (re.compile(r"\.cnn\.com"),)
-    SKIP_KEYWORDS = ("/videos/", "/video/", "/live/", "/audio/", "/newsletters", "/account")
+    SKIP_KEYWORDS = (
+        "/videos/", "/video/", "/live/",          # 视频 / 直播流
+        "/audio/", "/newsletters", "/account",     # 音频 / 简报 / 账户
+        "/style/", "/travel/",                     # 非新闻频道
+    )
 
     async def fetch_list(self) -> CrawlResult:
         result = CrawlResult(source_code=self.config.code)
@@ -44,12 +65,16 @@ class CNNCrawler(BaseCrawler):
             items: List[CrawledItem] = []
             pos = 0
 
-            # CNN 已移除 <article> 标签，改用 headless CMS 的 card 容器
-            for art in soup.select("[class*='card']"):
-                a = art if art.name == "a" else art.select_one("a[href]")
-                if not a or not a.get("href"):
+            # 只取页面第一个 zone 模块内的新闻卡片（约15条）
+            # 后续如需扩展其他 zone，改为遍历所有 div.zone 即可
+            first_zone = soup.select_one("div.zone")
+            zone_cards = first_zone.select("li.card.container__item") if first_zone else []
+            for card in zone_cards:
+                # ---- 链接：取 a.container__link 而非图片的 <a> ----
+                link_el = card.select_one('a[class*="container__link"]')
+                if not link_el or not link_el.get("href"):
                     continue
-                href = a["href"]
+                href = link_el["href"]
                 if href.startswith("/"):
                     href = urljoin(self.config.homepage, href)
                 if not any(p.search(href) for p in self.URL_FILTERS):
@@ -60,37 +85,16 @@ class CNNCrawler(BaseCrawler):
                     continue
                 seen_urls.add(href)
 
-                # CNN 的 card 可能是多条目聚合容器，标题提取策略：
-                # 1. 优先取 span[class*='container']（精确的文章标题）
-                # 2. 否则在 card 内找文本长度合适的 a 标签
-                # 3. 最后回退到 h1/h2/h3
-                title = ""
-                span_el = art.select_one("span[class*='container']")
-                if span_el:
-                    title = span_el.get_text(strip=True)
-                if not title or len(title) < 10:
-                    for link_a in art.select("a[href]"):
-                        t = link_a.get_text(strip=True)
-                        cls = " ".join(link_a.get("class", []))
-                        if len(t) >= 10 and "image" not in cls and "media" not in cls and "logo" not in cls:
-                            title = t
-                            break
-                if not title or len(title) < 10:
-                    title_el = art.select_one("h1, h2, h3, [class*='headline'], [class*='title']")
-                    title = (title_el.get_text(strip=True) if title_el else "").strip()
+                # ---- 标题：span.container__headline-text ----
+                headline_el = card.select_one('span[class*="headline-text"]')
+                title = (headline_el.get_text(strip=True) if headline_el else "").strip()
                 if not title or len(title) < 10:
                     continue
                 if _TITLE_NOISE_PATTERNS.search(title) and len(title) < 30:
                     continue
 
-                summary_el = art.select_one("p, [class*='description']")
-                summary = (summary_el.get_text(strip=True) if summary_el else "")[:600]
-
-                # CNN card 内的时间如 "29 min ago" 在 timestamp class 元素中
-                time_el = art.select_one("[class*='timestamp']")
-                published_at = parse_relative_time(time_el.get_text(strip=True)) if time_el else None
-
-                img_el = art.select_one("img")
+                # ---- 封面图 ----
+                img_el = card.select_one("img")
                 cover = None
                 if img_el:
                     cover = img_el.get("src") or img_el.get("data-src")
@@ -101,9 +105,7 @@ class CNNCrawler(BaseCrawler):
                 items.append(CrawledItem(
                     url=href,
                     title=title,
-                    summary=summary,
                     cover_image=cover,
-                    published_at=published_at,
                     position=pos,
                 ))
                 if len(items) >= 50:
