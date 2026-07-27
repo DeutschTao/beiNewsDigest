@@ -10,7 +10,7 @@
 
   <!-- 图片加载失败占位图 -->
   <view wx:if="{{imageError}}" class="card-placeholder">
-    <text class="placeholder-icon">📰</text>
+    <image class="placeholder-img" src="https://static.youngtao.wang/assets/images/placeholder1.png" mode="aspectFill"></image>
   </view>
 
   <!-- 渐变遮罩 -->

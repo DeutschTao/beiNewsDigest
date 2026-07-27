@@ -59,7 +59,7 @@
               ></image>
             </view>
             <view wx:else class="item-thumb item-thumb-placeholder">
-              <text class="thumb-placeholder-icon">📰</text>
+              <image class="placeholder-img" src="https://static.youngtao.wang/assets/images/placeholder2.png" mode="aspectFill"></image>
             </view>
             <!-- 内容 -->
             <view class="item-body {{item.cover_image ? '' : 'no-thumb'}}">

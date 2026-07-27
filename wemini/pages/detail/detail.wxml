@@ -33,7 +33,7 @@
           bindtap="onPreviewCover"
         ></image>
         <view wx:else class="cover-placeholder">
-          <text class="placeholder-icon">📰</text>
+          <image class="placeholder-img" src="https://static.youngtao.wang/assets/images/placeholder2.png" mode="aspectFill"></image>
         </view>
         <view class="cover-overlay"></view>
       </view>

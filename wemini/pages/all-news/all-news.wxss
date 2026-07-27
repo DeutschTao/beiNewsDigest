@@ -107,9 +107,9 @@
   background: #f0f0f0;
 }
 
-.thumb-placeholder-icon {
-  font-size: 48rpx;
-  opacity: 0.4;
+.placeholder-img {
+  width: 100%;
+  height: 100%;
 }
 
 /* 内容 */
