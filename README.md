@@ -196,3 +196,28 @@ supervisorctl restart beinews-v2
 
 # 3. 查看启动日志确认正常
 supervisorctl status beinews-v2
+
+## 切换代理节点的配置
+不需要重启
+# 切到英国
+curl -X PUT http://127.0.0.1:9090/proxies/Ghelper \
+  -H "Content-Type: application/json" \
+  -d '{"name": "🇬🇧 英国"}'
+
+# 切到新加坡
+curl -X PUT http://127.0.0.1:9090/proxies/Ghelper \
+  -H "Content-Type: application/json" \
+  -d '{"name": "🇸🇬 新加坡"}'
+
+# 切到香港
+curl -X PUT http://127.0.0.1:9090/proxies/Ghelper \
+  -H "Content-Type: application/json" \
+  -d '{"name": "🇭🇰 香港智能"}'
+
+# 切到日本
+curl -X PUT http://127.0.0.1:9090/proxies/Ghelper \
+  -H "Content-Type: application/json" \
+  -d '{"name": "🇯🇵 日本"}'
+
+# 全部线路
+"all":["🌐 全球智能","美国西雅图","美国西雅图2","美国洛杉矶[CM]","美国硅谷","美国硅谷2","美国硅谷3","美国圣何塞","美国洛杉矶","美国洛杉矶2","美国ISP","🇭🇰 香港智能","🇭🇰香港中转[CM]","🇭🇰香港精品4","🇭🇰香港精品3","🇭🇰香港精品2","🇬🇧 英国","🇫🇷 法国","🇩🇪 德国","🇲🇾 马来西亚","🇹🇭 泰国[CM]","🇰🇷韩國","🇨🇳 台湾","🇯🇵 日本","🇮🇩 印尼","🇯🇵 日本4","🇸🇬 新加坡[CM]","🇸🇬 新加坡","🇸🇬 新加坡3","AI专用","线路少请更换软件看公告"]
